@@ -24,12 +24,12 @@ class DTree:
   def Split(self,x):
     if self.key>x:
       if self.left is None:
-        print('self.left is None')
+        #print('self.left is None')
         rTree=DTree(self.key,self.prior)
         rTree.right=self.right
         rTree.left=None
         lTree=None
-        rTree.show()
+        #rTree.show()
         return (lTree,rTree)
       else:
         rTree=DTree(self.key,self.prior)
@@ -37,7 +37,7 @@ class DTree:
         lTree,rTree.left=self.Split(x)
     else:
       if self.right is None:
-        print('self.right is None')
+        #print('self.right is None')
         lTree=DTree(self.key,self.prior)
         lTree.left=self.left
         lTree.right=None
@@ -48,9 +48,28 @@ class DTree:
         rTree.right=self.right
         lTree.right,rTree=self.Split(x)
 
-  def Add(self,key):
+  def Add(self,key,p=random()):
     lTree,rTree=self.Split(key)
-    self=DTree.Merge(DTree.Merge(lTree,DTree(key,random())),rTree)
+    print('l,r: ')
+    if lTree is None:
+      print('None',end=' ')
+    else:
+      lTree.show()
+    if rTree is None:
+      print('None',end=' ')
+    else:
+      rTree.show()
+    res=DTree.Merge(lTree,DTree(key,p))
+    if res is None:
+      print('None',end=' ')
+    else:
+      res.show()
+    res=DTree.Merge(res,rTree)
+    if res is None:
+      print('None',end=' ')
+    else:
+      res.show()
+    self=res
     print('item added!')
 
   def show(self):
@@ -63,16 +82,14 @@ class DTree:
       self.right.show()
     pass
 
-tree=DTree(15)
-tree.Add(3)
-tree.Add(33)
-tree.Add(1)
-tree.Add(45)
-tree.Add(67)
-tree.Add(111)
-tree.Add(0)
+tree=DTree(7,7)
+tree.Add(1,1)
+'''tree.Add(4,5)
+tree.Add(5,1)
+tree.Add(8,3)
+tree.Add(9,5)
+tree.Add(10,3)'''
 tree.show()
-print(tree)
 
 
 
