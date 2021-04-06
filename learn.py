@@ -158,7 +158,7 @@ print(dir('None'))
 fhand = open('lists')
 print(fhand)
 #Чтение файлов
-fhand = open('lists')
+fhand = open('data')
 count = 0
 for line in fhand:
     count = count + 1
