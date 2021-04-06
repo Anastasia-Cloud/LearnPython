@@ -1,5 +1,5 @@
 #декартово дерево
-
+from random import random
 class DTree:
 
   def __init__(self,key,prior):
@@ -8,17 +8,18 @@ class DTree:
     self.prior=prior
     self.left=None
     self.right=None
-  
-  def Merge(self,lTree,rTree):
+
+  @staticmethod
+  def Merge(lTree,rTree):
     if lTree is None:
       return rTree
     if rTree is None:
       return lTree
     if lTree.prior>rTree.prior:
-      lTree.right=self.Merge(lTree.right,rTree)
+      lTree.right=DTree.Merge(lTree.right,rTree)
       return lTree
     else:
-      rTree.left=self.Merge(rTree.left,lTree)
+      rTree.left=DTree.Merge(rTree.left,lTree)
       return rTree
 
   def Split(self,x):
@@ -45,6 +46,10 @@ class DTree:
         rTree.right=self.right
         lTree.right,rTree=self.Split(x)
 
-  
+  def Add(self,key):
+    lTree,rTree=self.Split(key)
+    self=DTree.Merge(DTree.Merge(lTree,DTree(key,random())),rTree)
+    print('item added!')
+
 
 
