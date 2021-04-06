@@ -20,3 +20,31 @@ class DTree:
     else:
       rTree.left=self.Merge(rTree.left,lTree)
       return rTree
+
+  def Split(self,x):
+    if self.key>x:
+      if self.left is None:
+        rTree=DTree(self.key,self.prior)
+        rTree.right=self.right
+        rTree.left=None
+        lTree=None
+        return (lTree,rTree)
+      else:
+        rTree=DTree(self.key,self.prior)
+        rTree.right=self.right
+        lTree,rTree.left=self.Split(x)
+    else:
+      if self.right is None:
+        lTree=DTree(self.key,self.prior)
+        lTree.left=self.left
+        lTree.right=None
+        rTree=None
+        return (lTree,rTree)
+      else:
+        lTree=DTree(self.key,self.prior)
+        rTree.right=self.right
+        lTree.right,rTree=self.Split(x)
+
+  
+
+
