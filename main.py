@@ -14,8 +14,23 @@ class Heap:
       parent=(index-1)//2
     print('item added!')
   
+  def findMax(self,i1,i2):
+    if self.heapList[i1]>self.heapList[i2]:
+      return i1
+    else:
+      return i2
+
   def heapify(self,index):
-    pass
+    left=2*index+1
+    right=2*index+2
+    maxCh=self.findMax(left,right)
+    while self.heapList[maxCh]>self.heapList[index]:
+      self.heapList[index],self.heapList[maxCh]=self.heapList[maxCh],self.heapList[index]
+      index=maxCh
+      left=2*index+1
+      right=2*index+2
+      maxCh=self.findMax(left,right)
+    print('heap is ordered!')
 
   def buildHeap(self,arr):
     pass
@@ -32,3 +47,4 @@ myHeap.add(77)
 myHeap.add(6)
 myHeap.add(34)
 myHeap.add(1)
+myHeap.heapify(0)
