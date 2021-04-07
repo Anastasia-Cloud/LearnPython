@@ -58,6 +58,11 @@ class DTree:
     #res.show()
     return res
 
+  def delete(self,key):
+    l,r=self.Split(key-1)
+    m,r=r.Split(key)
+    return DTree.Merge(l,r)
+
 
   @staticmethod
   def showTree(tree):
@@ -84,10 +89,11 @@ class DTree:
 tree=DTree(7,7)
 tree=tree.Add(1,1)
 tree=tree.Add(4,5)
-tree=tree.Add(5,2)
+tree=tree.Add(4,2)
 tree=tree.Add(8,3)
 tree=tree.Add(9,5)
 tree=tree.Add(10,3)
+tree=tree.delete(4)
 tree.show()
 
 
