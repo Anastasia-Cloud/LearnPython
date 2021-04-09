@@ -1,20 +1,24 @@
 '''
-Даны три множества целых чисел A, B и C. Все числа в каждом множестве различны. Также дано целое число S. Необходимо найти все такие тройки (a, b, c), что a∈A, b∈B, c∈C, a + b + c = S.
-
-Пример входа
-1 2 3
-1 2 3
-1 2 3
-6
-
-
+Даны две строки S1 и S2 . Длины строк не превосходят 1000000. Найдите их наибольшую по длине общую подстроку.
 '''
-A=[int(i) for i in input().split()]
-B=[int(i) for i in input().split()]
-C=set([int(i) for i in input().split()])
-S=int(input())
-for a in A:
-  for b in B:
-    c=S-a-b
-    if c in C:
-      print('a=',a,'b=',b,'c=',c) 
+def fixSubstr(l,s1,s2):
+  m=set()
+  for i in range(len(s1)-l+1):
+    m.add(s1[i:i+l])
+  for i in range(len(s2)-l+1):
+    if s2[i:i+l] in m:
+      return s2[i:i+l]
+  
+
+def maxSubstr(s1,s2):
+  l=min(len(s1),len(s2))
+  for i in range(l,0,-1):
+    res=fixSubstr(i,s1,s2)
+    if res is not None:
+      return res
+
+print(maxSubstr('aabcdeabcdef','acdeabf'))
+print(maxSubstr('aabcdeabcdef','aabcdea def'))
+print(maxSubstr('qwerty','123'))
+
+    
