@@ -1,4 +1,5 @@
 #система непересекающихся множеств
+from random import random
 diction={}
 def makeSet(x): #добавление множества 
   diction[x]=x
@@ -11,5 +12,11 @@ def findRoot(x):
     return diction[x]
 
 def unite(x,y):
-  pass
+  x=findRoot(x)
+  y=findRoot(y)
+  if random.randint(0,1):
+    diction[x]=y
+  else:
+    diction[y]=x
+  
 
