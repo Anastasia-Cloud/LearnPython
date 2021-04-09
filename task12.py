@@ -4,6 +4,9 @@ class Heap:
   def __init__(self):
     self.heapList=[]
 
+  def lenHeap(self):
+    return len(self.heapList)
+
   def add(self,data):
     self.heapList.append(data)
     index=len(self.heapList)-1
@@ -12,7 +15,7 @@ class Heap:
       self.heapList[index],self.heapList[parent]=self.heapList[parent],self.heapList[index]
       index=parent
       parent=(index-1)//2
-    print('item added: ',self.heapList)
+    #print('item added: ',self.heapList)
   
   def findMax(self,i1,i2):
     if i2>=len(self.heapList):
@@ -47,6 +50,7 @@ class Heap:
     self.heapList=arr[:]
     for i in range((len(self.heapList)-2)//2,-1,-1):
       self.heapify(i)
+    return self.heapList
     #print('build result: ',self.heapList)
   
   def getMax(self):
@@ -70,13 +74,12 @@ class Heap:
     return res
 
 '''
-Алгоритм heapSort эффективен также в ситуации, когда требуется частичная сортировка массива. А именно, по задан-
-ному k и массиву A длины n нужно отобрать среди ключей k максимальных и их упорядочить. В этом случае возможно за линейное время преобразовать A в двоичную кучу, а затем выполнить k операций getMax. Общая сложность алгоритма оказывается равной
+Алгоритм heapSort эффективен также в ситуации, когда требуется частичная сортировка массива. А именно, по заданному k и массиву A длины n нужно отобрать среди ключей k максимальных и их упорядочить. В этом случае возможно за линейное время преобразовать A в двоичную кучу, а затем выполнить k операций getMax. Общая сложность алгоритма оказывается равной
 O(n + k log n), так что он может быть полезен в случае, когда k ≪ n.
 '''
 
 
-
+'''
 myHeap=Heap()
 myHeap.add(1)
 myHeap.add(2)
@@ -92,4 +95,4 @@ print(myHeap.getMax())
 print(myHeap.getMax())
 print(myHeap.getMax())
 print(myHeap.getMax())
-print(Heap.heapSort([2,5,6,9,1,4,3]))
+print(Heap.heapSort([2,5,6,9,1,4,3]))'''
