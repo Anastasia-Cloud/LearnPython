@@ -1,10 +1,14 @@
 #система непересекающихся множеств
 diction={}
-def makeSet(x):
+def makeSet(x): #добавление множества 
   diction[x]=x
 
 def findRoot(x):
-  pass
+  if diction[x]==x:
+    return x
+  else:
+    diction[x]=findRoot(diction[x])
+    return diction[x]
 
 def unite(x,y):
   pass
