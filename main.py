@@ -24,9 +24,24 @@ print(f(5))
 print(f(6))
 '''
 
+'''
 def print_args(*args):
   print(args)
 
 a=(1,2,3)
 print_args(a)
 print_args(*a)
+'''
+
+'''
+def print_args(**args):
+  print(args)
+d={'a':123, 'b':456}
+print_args(**d)
+
+'''
+
+def f(*,a=1,b=2):
+  print(a,b)
+
+f(a=4)
