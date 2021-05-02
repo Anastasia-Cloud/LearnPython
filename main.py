@@ -43,5 +43,16 @@ print_args(**d)
 
 def f(*,a=1,b=2):
   print(a,b)
+#f(a=4)
 
-f(a=4)
+d1={'a':1, 'b':2}
+d2={'a':3, 'd':4}
+#print({**d1,**d2})
+
+def func():
+  '''
+  do anything...
+  '''
+  return 0
+
+help(func)
